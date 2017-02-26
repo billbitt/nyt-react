@@ -28,6 +28,7 @@ var Saved = React.createClass({
                                 return (
                                     <SavedArticle 
                                         key={index}
+                                        id={item._id}
                                         title={item.title}
                                         link={item.link}
                                         dateCreated={item.dateCreated}
