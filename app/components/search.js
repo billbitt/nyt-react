@@ -16,24 +16,11 @@ var Search = React.createClass({
         this.setState({ term: event.target.value });
     },
 
-    handleStartDateChange: function(event) {
-        this.setState({ startDate: event.target.value });
-    },
-
-    handleEndDateChange: function(event) {
-        this.setState({ endDate: event.target.value });
-    },
-
     handleSubmit: function(event) {
         event.preventDefault();
 
-        this.props.searchArticles(this.state.term, this.state.startDate, this.state.endDate); 
-
-        this.setState({ 
-            term: "",
-            startDate: "",
-            endDate: ""
-        });
+        this.props.setTerm(this.state.term);  // so this updates the parent?
+        this.setState({ term: "" });
 
     },
 
@@ -50,25 +37,24 @@ var Search = React.createClass({
                             <label>Search Term</label>
                             <input 
                                 value={this.state.term}
-                                onChange={this.handleTermChange}
+                                onChange={this.handleChange}
                                 type="text" 
                                 className="form-control text-center" 
                                 id="term"
                                 required
                             />
-                            <label>Start Year (YYYYMMDD)</label>
+                            <label>Start Year</label>
                             <input 
-                                value={this.state.startDate}
-                                onChange={this.handleStartDateChange}
                                 type="text" 
+                                name="startYear" 
+                                placeholder="YYYYMMDD"
                                 className="form-control text-center" 
                             />
-                            <label>End Year (YYYYMMDD)</label>
+                            <label>End Year</label>
                             <input 
-                                value={this.state.endDate}
-                                onChange={this.handleEndDateChange}
                                 type="text" 
                                 name="endYear" 
+                                placeholder="YYYYMMDD"
                                 className="form-control text-center" 
                             />
                             <p></p>
