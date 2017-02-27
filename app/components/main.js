@@ -21,22 +21,20 @@ var Main = React.createClass({
         // load all the saved articles 
         helpers.getArticles()
             .then(function(response) {
-                console.log("get response received");
                 if (response !== this.state.saved) {
-                    console.log("Saved", response.data);
+                    
                     this.setState({ saved: response.data});
                 };
             }.bind(this));
     },
 
     updateSavedList: function() {  // 
-        console.log("updating saved list");
+        
         // reload all the saved articles 
         helpers.getArticles()
             .then(function(response) {
-                console.log("get response received");
                 if (response !== this.state.saved) {
-                    console.log("Saved", response.data);
+                    
                     this.setState({ saved: response.data});
                 };
             }.bind(this));
@@ -47,8 +45,6 @@ var Main = React.createClass({
         helpers.runQuery(term, startDate, endDate)
             .then(function(data) {
                 if (data !== this.state.results) {
-
-                    console.log("New results:", data);
 
                     this.setState({ results: data });
 
