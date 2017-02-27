@@ -24,9 +24,10 @@ var Saved = React.createClass({
                                         link={item.link}
                                         dateCreated={item.dateCreated}
                                         notes={item.notes}
+                                        updateSavedList={this.props.updateSavedList}
                                     />
                                 );
-                            })}
+                            }.bind(this))}
                         </div>
                     </div>
                 </div>

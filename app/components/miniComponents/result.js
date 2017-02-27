@@ -9,6 +9,8 @@ var Result = React.createClass({
         event.preventDefault();
 
         helpers.saveArticle(this.props.title, this.props.link);  // save this article to the database 
+
+        this.props.updateSavedList();
     },
 
 

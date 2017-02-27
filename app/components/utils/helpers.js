@@ -54,9 +54,9 @@ var helper = {
     },
 
     updateArticle: function(id, notes){
-        console.log("helper wants to update id:", id)
+        console.log("helper wants to update id:", id, "with new note:", notes)
         return Axios({
-            method: 'update',
+            method: 'put',
             url: '/api/saved',
             data: {
                 articleId: id,

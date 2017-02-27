@@ -19,9 +19,10 @@ var Results = React.createClass({
                                         key={index}
                                         title={item.headline.main}
                                         link={item.web_url}
+                                        updateSavedList={this.props.updateSavedList}
                                     />
                                 );
-                            })}
+                            }.bind(this))}
                         </div>
                     </div>
                 </div>

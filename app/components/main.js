@@ -29,7 +29,8 @@ var Main = React.createClass({
             }.bind(this));
     },
 
-    updateSavedList: function() {  // if the component changes...
+    updateSavedList: function() {  // 
+        console.log("updating saved list");
         // reload all the saved articles 
         helpers.getArticles()
             .then(function(response) {
@@ -72,8 +73,14 @@ var Main = React.createClass({
                     <div className="col-lg-8">
                         <div className="row">
                             <Search setTerm={this.setTerm} />
-                            <Results results={this.state.results} />
-                            <Saved saved={this.state.saved} />
+                            <Results 
+                                results={this.state.results} 
+                                updateSavedList={this.updateSavedList}
+                            />
+                            <Saved 
+                                saved={this.state.saved} 
+                                updateSavedList={this.updateSavedList}
+                            />
                         </div>
                     </div>
                     

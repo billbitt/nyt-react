@@ -86,6 +86,23 @@ app.delete("/api/saved", function(req, res) { // route to delete a saved article
 })
 
 app.put("/api/saved", function(req, res) { // route to update a saved article (comments)
+
+    console.log("BODY:", req.body);
+
+    Saved.findByIdAndUpdate(
+        req.body.articleId, 
+        {$set: {notes: req.body.notes}},
+        function(err) {
+
+            console.log("updating article with id:", req.body.articleId);
+
+            if (err) {
+                res.send(err);
+            } else {
+                res.send("Article successfully updated.")
+            };
+        }
+    );
     
 })
 

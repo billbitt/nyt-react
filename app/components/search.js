@@ -17,6 +17,7 @@ var Search = React.createClass({
 
         this.props.setTerm(this.state.term);  // so this updates the parent?
         this.setState({ term: "" });
+        
     },
 
     // render the component
@@ -32,10 +33,10 @@ var Search = React.createClass({
                             <label>Search Term</label>
                             <input 
                                 value={this.state.term}
+                                onChange={this.handleChange}
                                 type="text" 
                                 className="form-control text-center" 
                                 id="term"
-                                onChange={this.handleChange}
                                 required
                             />
                             <label>Start Year</label>
