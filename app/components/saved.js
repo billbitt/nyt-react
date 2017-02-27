@@ -2,15 +2,6 @@ var React = require("react");
 
 var SavedArticle = require("./miniComponents/savedArticle.js");
 
-var ARTICLES_LIST = [
-    {
-        title: "test title2",
-        link: "test link2",
-        dateCreated: "01/13/2017",
-        notes: "some test notes"
-
-    }
-]
 // NOTE: need to import articles using Axio and helpers
 
 var Saved = React.createClass({
@@ -24,11 +15,11 @@ var Saved = React.createClass({
                     </div>
                     <div className="panel-body">
                         <div className="row">
-                            {ARTICLES_LIST.map(function(item, index){
+                            {this.props.saved.map(function(item, index){
                                 return (
                                     <SavedArticle 
                                         key={index}
-                                        id={item._id}
+                                        articleId={item._id}
                                         title={item.title}
                                         link={item.link}
                                         dateCreated={item.dateCreated}

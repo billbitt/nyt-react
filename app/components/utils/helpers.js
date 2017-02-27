@@ -1,4 +1,4 @@
-var axios = require("axios");  // will use axios for performing HTTP requests and use promises 
+var Axios = require("axios");  // will use axios for performing HTTP requests and use promises 
 
 var API_KEY = "a4cfc83fdd764fc4be6a1cf4f1dc72a6";
 
@@ -17,7 +17,7 @@ var helper = {
             queryURL = queryURL + "?end_date=" + endDate;
         };
 
-        return axios.get(queryURL)
+        return Axios.get(queryURL)
             .then(function(response){
                 //console.log("nyt response:", response)
                 if(response.data.response.docs){
@@ -29,27 +29,40 @@ var helper = {
     },
 
     getArticles: function(){
-        return axios.get("/api/saved");
+        console.log("getting saved articles");
+        return Axios.get("/api/saved");
     },
 
-    saveArticle: function(article) {
-        return axios.post("/api/saved", {
-            title: article.title,
-            link: article.link,
+    saveArticle: function(title, link) {
+        return Axios.post("/api/saved", {
+            title: title,
+            link: link
         });
 
     },
 
-    deleteArticle: function(article){
-        return axios.delete("/api/saved", {
-            link: article.link
-        })
+    deleteArticle: function(id){
+        console.log("helper wants to delete id:", id)
+        return Axios({
+            method: 'delete',
+            url: '/api/saved',
+            data: {
+                articleId: id,
+            }
+        });
+
     },
 
-    updateArticle: function(article){
-        return axios.put("/api/saved", {
-            link: article.link
-        })
+    updateArticle: function(id, notes){
+        console.log("helper wants to update id:", id)
+        return Axios({
+            method: 'update',
+            url: '/api/saved',
+            data: {
+                articleId: id,
+                notes: notes
+            }
+        });
     }
 }
 

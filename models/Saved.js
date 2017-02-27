@@ -15,7 +15,7 @@ var SavedSchema = new Schema({
     },
     notes: {
         type: String,
-        default: ""
+        default: "Enter notes here"
     }
 });
 

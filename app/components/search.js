@@ -39,11 +39,22 @@ var Search = React.createClass({
                                 required
                             />
                             <label>Start Year</label>
-                            <input type="text" name="startYear" placeholder="YYYYMMDD"></input>
+                            <input 
+                                type="text" 
+                                name="startYear" 
+                                placeholder="YYYYMMDD"
+                                className="form-control text-center" 
+                            />
                             <label>End Year</label>
-                            <input type="text" name="endYear" placeholder="YYYYMMDD"></input>
+                            <input 
+                                type="text" 
+                                name="endYear" 
+                                placeholder="YYYYMMDD"
+                                className="form-control text-center" 
+                            />
+                            <p></p>
                             <button 
-                                className="btn btn-default" 
+                                className="btn btn-primary" 
                                 type="submit"
                             >
                                 Search

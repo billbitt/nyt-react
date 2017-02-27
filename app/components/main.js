@@ -12,17 +12,16 @@ var Main = React.createClass({
     // lifecycle methods 
     getInitialState: function() {
         return {
-            startDate: "",
-            endDate: "",
             results: [], 
             saved: []
         }
     },
 
-    componenetDidMount: function() {  // when component lrenders... 
+    componentDidMount: function() {  // when component lrenders... 
+        // load all the saved articles 
         helpers.getArticles()
             .then(function(response) {
-                console.log(response);
+                console.log("get response received");
                 if (response !== this.state.saved) {
                     console.log("Saved", response.data);
                     this.setState({ saved: response.data});
@@ -30,8 +29,16 @@ var Main = React.createClass({
             }.bind(this));
     },
 
-    componentDidUpdate: function() {  // if the component changes...
-        
+    updateSavedList: function() {  // if the component changes...
+        // reload all the saved articles 
+        helpers.getArticles()
+            .then(function(response) {
+                console.log("get response received");
+                if (response !== this.state.saved) {
+                    console.log("Saved", response.data);
+                    this.setState({ saved: response.data});
+                };
+            }.bind(this));
     },
 
     setTerm: function(term) {

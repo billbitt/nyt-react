@@ -1,0 +1,7 @@
+.result, .saved-article {
+    overflow: auto;
+}
+
+textarea {
+    width: 100%;
+}
