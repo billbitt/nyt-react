@@ -2,15 +2,16 @@ var React = require("react");
 
 var Result = require("./miniComponents/result.js");
 
-var RESULTS_LIST = [
+/*var RESULTS_LIST = [
     {
         title: "test title",
         link: "test link"
     }
-];
+];*/
 // need to import results list.  probably as a prop from the parent.  will need to push up with sudo from search and then back down to results as a prop 
 
 var Results = React.createClass({
+
     render: function(){
         return (
             <div className="col-lg-12">
@@ -20,7 +21,7 @@ var Results = React.createClass({
                     </div>
                     <div className="panel-body">
                         <div className="row">
-                            {RESULTS_LIST.map(function(item, index){
+                            {this.props.results.map(function(item, index){
                                 return (
                                     <Result 
                                         key={index}

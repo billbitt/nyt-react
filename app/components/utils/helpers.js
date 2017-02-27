@@ -3,11 +3,11 @@ var axios = require("axios");  // will use axios for performing HTTP requests an
 var API_KEY = "a4cfc83fdd764fc4be6a1cf4f1dc72a6";
 
 var helper = {
-    runuery: function(searchTerm, startDate, endDate) {
+    runQuery: function(searchTerm, startDate, endDate) {
         console.log("search for:", searchTerm, startDate, endDate);
 
         // build the query url 
-        var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json" + "?" + API_KEY + "?q=" + searchTerm;
+        var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json" + "?api-key=" + API_KEY + "&q=" + searchTerm;
 
         if (startDate){
             queryURL = queryURL + "?begin_date=" + startDate;
@@ -19,10 +19,11 @@ var helper = {
 
         return axios.get(queryURL)
             .then(function(response){
-                if(response.data.results){
-                    return response.data.results;
+                //console.log("nyt response:", response)
+                if(response.data.response.docs){
+                    return response.data.response.docs;
                 } else {
-                    return "";
+                    return "no results";
                 };
             })
     },
@@ -41,6 +42,12 @@ var helper = {
 
     deleteArticle: function(article){
         return axios.delete("/api/saved", {
+            link: article.link
+        })
+    },
+
+    updateArticle: function(article){
+        return axios.put("/api/saved", {
             link: article.link
         })
     }
