@@ -1,12 +1,13 @@
 {
   "name": "my-first-route",
   "version": "1.0.0",
-  "description": "",
+  "description": "A single page application using the MEAN stack to view and save articles from the New York Times",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Bill Bittner",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.3",

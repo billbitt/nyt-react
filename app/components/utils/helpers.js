@@ -10,11 +10,11 @@ var helper = {
         var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json" + "?api-key=" + API_KEY + "&q=" + searchTerm;
 
         if (startDate){
-            queryURL = queryURL + "?begin_date=" + startDate;
+            queryURL = queryURL + "&begin_date=" + startDate;
         };
 
         if (endDate){
-            queryURL = queryURL + "?end_date=" + endDate;
+            queryURL = queryURL + "&end_date=" + endDate;
         };
 
         return Axios.get(queryURL)

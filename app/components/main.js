@@ -42,9 +42,9 @@ var Main = React.createClass({
             }.bind(this));
     },
 
-    setTerm: function(term) {
+    searchArticles: function(term, startDate, endDate) {
 
-        helpers.runQuery(term, this.state.startDate, this.state.endDate)
+        helpers.runQuery(term, startDate, endDate)
             .then(function(data) {
                 if (data !== this.state.results) {
 
@@ -72,7 +72,7 @@ var Main = React.createClass({
 
                     <div className="col-lg-8">
                         <div className="row">
-                            <Search setTerm={this.setTerm} />
+                            <Search searchArticles={this.searchArticles} />
                             <Results 
                                 results={this.state.results} 
                                 updateSavedList={this.updateSavedList}
